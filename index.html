@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aash’s Trust Fund</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    body {
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:#f4f4f4;
+      color:#222;
+      line-height:1.6;
+      scroll-behavior:smooth;
+    }
+    h1,h2,h3 {margin:0;color:#111;}
+    header {
+      display:flex; justify-content:space-between; align-items:center;
+      background:#2c3e50; color:#fff; padding:15px 20px;
+      position:sticky; top:0; z-index:1000; flex-wrap:wrap;
+    }
+    header .logo {font-size:24px; font-weight:bold;}
+    nav a {margin-left:15px; font-size:16px; color:#fff; text-decoration:none; transition:color 0.3s;}
+    nav a.active, nav a:hover {color:#f39c12; font-weight:bold;}
+
+    /* Hero */
+    .hero {
+      background:url('https://placekitten.com/1200/500') center/cover no-repeat;
+      padding:100px 20px; text-align:center; color:#fff;
+    }
+    .hero h1 {font-size:40px; margin-bottom:10px;}
+    .hero p {font-size:18px; margin-bottom:20px;}
+    .hero .donate-btn {
+      background:#f39c12; color:#fff; padding:12px 25px;
+      border-radius:5px; text-decoration:none; font-weight:bold;
+      transition:background 0.3s;
+    }
+    .hero .donate-btn:hover {background:#e67e22;}
+
+    /* Statistics Cards */
+    .cards {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:20px; max-width:1000px; margin:40px auto; text-align:center;
+    }
+    .card {
+      background:#fff; padding:25px 15px; border-radius:10px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s;
+    }
+    .card:hover {transform: translateY(-5px);}
+    .card h2 {font-size:28px; color:#2c3e50; margin-bottom:5px;}
+    .card p {font-size:16px; color:#555;}
+
+    /* Sections */
+    section {max-width:1000px; margin:40px auto; padding:0 20px;}
+    section h1 {font-size:32px; margin-bottom:15px; text-align:center;}
+    section p, section ul {font-size:16px; margin-bottom:20px;}
+    ul li {margin-bottom:8px;}
+
+    /* Gallery */
+    .gallery-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px;}
+    .gallery-item img {width:100%; border-radius:10px; object-fit:cover; transition:transform 0.3s;}
+    .gallery-item img:hover {transform:scale(1.05);}
+
+    /* Donate */
+    .donate-box {display:flex; flex-direction:column; gap:15px;}
+    .donate-box .method {
+      display:flex; align-items:center; background:#fff; padding:10px 15px; border-radius:8px;
+      box-shadow:0 3px 8px rgba(0,0,0,0.1);
+    }
+    .donate-box .method img {width:80px; margin-right:15px;}
+    .donate-box p {margin:0; font-size:16px;}
+
+    /* Contact */
+    .contact-buttons {display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px;}
+    .contact-buttons a {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:12px 25px; border-radius:8px; text-decoration:none; color:#fff; font-weight:bold;
+      font-size:16px; transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .contact-buttons a:nth-child(1) {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+    .contact-buttons a:nth-child(2) {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+    }
+    .contact-buttons a:hover {transform:translateY(-3px); box-shadow:0 6px 15px rgba(0,0,0,0.2);}
+
+    /* Volunteer Form */
+    #volunteerForm {
+      background:#fff; padding:20px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      max-width:600px; margin:20px auto;
+      display:flex; flex-direction:column; gap:15px;
+    }
+    #volunteerForm input, #volunteerForm textarea {
+      padding:10px; border-radius:5px; border:1px solid #ccc; width:100%;
+      font-size:16px; resize:none;
+    }
+    #volunteerForm button {
+      background:#f39c12; color:#fff; padding:12px; border:none; border-radius:5px; font-size:16px;
+      cursor:pointer; font-weight:bold;
+      transition:background 0.3s;
+    }
+    #volunteerForm button:hover {background:#e67e22;}
+
+    /* Footer */
+    footer {background:#2c3e50; color:#fff; text-align:center; padding:20px; margin-top:40px;}
+
+    @media(max-width:768px) {
+      header {flex-direction:column; text-align:center;}
+      nav a {margin:10px 0;}
+      .hero h1 {font-size:32px;}
+      .hero p {font-size:16px;}
+      .cards {grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Aash’s Trust Fund</div>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#impact">Impact</a>
+    <a href="#mission">Mission</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#donate">Donate</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="hero" class="hero">
+  <h1>In Loving Memory of Aash</h1>
+  <p>Dedicated to rescuing and caring for stray cats</p>
+  <a href="#donate" class="donate-btn">Donate Now</a>
+</section>
+
+<section id="impact" class="cards">
+  <div class="card"><h2 id="total-rescues">120</h2><p>Cats Rescued</p></div>
+  <div class="card"><h2 id="total-donations">PKR 250,000</h2><p>Total Donations</p></div>
+  <div class="card"><h2 id="total-expenses">PKR 180,000</h2><p>Total Expenses</p></div>
+  <div class="card"><h2 id="current-cats">35</h2><p>Cats Currently in Care</p></div>
+  <div class="card"><h2 id="volunteers">10</h2><p>Active Volunteers</p></div>
+</section>
+
+<section id="mission">
+  <h1>Our Mission</h1>
+  <p>Aash’s Trust Fund exists to help stray cats survive, heal, and live safely. Every donation and volunteer effort contributes to this cause.</p>
+  <h2>Why We Help</h2>
+  <p>Stray cats face hunger, disease, and neglect daily. Our mission is to give them a chance at a better life.</p>
+  <h2>What We Do</h2>
+  <ul>
+    <li>Daily feeding of stray cats</li>
+    <li>Rescue and medical care for injured or sick cats</li>
+    <li>Temporary shelter for vulnerable cats</li>
+    <li>Finding permanent homes whenever possible</li>
+  </ul>
+</section>
+
+<section id="gallery">
+  <h1>Gallery</h1>
+  <p>Some of the cats we have rescued and cared for.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="https://placekitten.com/400/300" alt="Cat 1"></div>
+    <div class="gallery-item"><img src="https://placekitten.com/401/300" alt="Cat 2"></div>
+    <div class="gallery-item"><img src="https://placekitten.com/402/300" alt="Cat 3"></div>
+    <div class="gallery-item"><img src="https://placekitten.com/403/300" alt="Cat 4"></div>
+    <div class="gallery-item"><img src="https://placekitten.com/404/300" alt="Cat 5"></div>
+    <div class="gallery-item"><img src="https://placekitten.com/405/300" alt="Cat 6"></div>
+  </div>
+</section>
+
+<section id="donate">
+  <h1>Donate</h1>
+  <p>Your donations help feed, treat, and shelter stray cats. Every rupee counts.</p>
+  <div class="donate-box">
+    <div class="method"><img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Easypaisa_logo.png" alt="Easypaisa"><p>0300-0000000</p></div>
+    <div class="method"><img src="https://upload.wikimedia.org/wikipedia/commons/3/32/JazzCash_Logo.png" alt="JazzCash"><p>0300-0000000</p></div>
+    <div class="method"><p>Bank Transfer:<br>Account: Your Name<br>Bank: Your Bank<br>IBAN: PK00-XXXX-XXXX-XXXX</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h1>Contact Us</h1>
+  <p>Reach out for volunteering or inquiries.</p>
+
+  <div class="contact-buttons">
+    <a href="mailto:youremail@example.com">📧 Contact via Email</a>
+    <a href="https://wa.me/03000000000" target="_blank">💬 Message on WhatsApp</a>
+  </div>
+
+  <h2>Volunteer Form</h2>
+  <form id="volunteerForm">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="number" name="age" placeholder="Age" required>
+    <input type="text" name="city" placeholder="City" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <textarea name="skills" placeholder="Skills / Experience" required></textarea>
+    <input type="text" name="availability" placeholder="Availability" required>
+    <button type="submit">Send via WhatsApp</button>
+  </form>
+</section>
+
+<script>
+  const form = document.getElementById('volunteerForm');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = form.name.value;
+    const age = form.age.value;
+    const city = form.city.value;
+    const phone = form.phone.value;
+    const skills = form.skills.value;
+    const availability = form.availability.value;
+
+    const message = `Hello, I want to volunteer for Aash's Trust Fund.%0A%0A` +
+      `*Full Name*: ${name}%0A` +
+      `*Age*: ${age}%0A` +
+      `*City*: ${city}%0A` +
+      `*Phone Number*: ${phone}%0A` +
+      `*Skills / Experience*: ${skills}%0A` +
+      `*Availability*: ${availability}`;
+
+    const whatsappURL = `https://wa.me/03000000000?text=${message}`;
+    window.open(whatsappURL, '_blank');
+  });
+</script>
+
+<footer>© 2025 Aash’s Trust Fund — Dedicated to Aash</footer>
+
+</body>
+</html>
