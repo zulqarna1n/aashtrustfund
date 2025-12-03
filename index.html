@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ATF — Aash's Trust Fund</title>
+  <title>ATF — Aash Trust Fund</title>
   <meta name="description" content="ATF — rescuing, treating and sheltering stray cats. Donate, volunteer or contact us to help save lives.">
   <meta name="keywords" content="cats, stray cats, rescue, animal charity, donate, volunteer, Aash Trust Fund">
   <link rel="stylesheet" href="assets/style.css">
@@ -14,7 +14,7 @@
 <header>
   <div class="logo">
     <span class="mark">ATF</span>
-    <span>Aash's Trust Fund</span>
+    <span>Aash Trust Fund</span>
   </div>
   <div class="hamburger" id="hamburger">
     <span></span>
@@ -23,9 +23,9 @@
   </div>
   <nav id="navMenu">
     <a href="#hero" class="active">Home</a>
-    <a href="#impact">Impact</a>
     <a href="#mission">Mission</a>
     <a href="#gallery">Gallery</a>
+    <a href="#impact">Impact</a>
     <a href="#donate">Donate</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -33,6 +33,8 @@
 
 <!-- Hero Section -->
 <section id="hero" class="hero">
+  <img src="assets/images/banner.jpg" alt="Hero Banner" class="hero-img">
+  <div class="overlay"></div>
   <div class="hero-inner">
     <h1>Compassion. Rescue. Recovery.</h1>
     <p>Saving stray cats through rescue, treatment and shelter — with transparency and care.</p>
@@ -43,51 +45,39 @@
   </div>
 </section>
 
-<!-- Impact Section -->
-<section id="impact">
-  <div class="stats">
-    <div class="stat"><div class="label">Cats Rescued / Treated</div><div class="value" id="rescueCount">1</div></div>
-    <div class="stat"><div class="label">Cats Currently in Care</div><div class="value" id="careCount">0</div></div>
-    <div class="stat"><div class="label">Vaccines Administered</div><div class="value" id="vaccineCount">0</div></div>
-    <div class="stat"><div class="label">Total Donations </div><div class="value" id="donationTotal">PKR 25,000</div></div>
-    <div class="stat"><div class="label">Total Expenses</div><div class="value" id="expenseTotal">PKR 11,000</div></div>
-    <div class="stat"><div class="label">Available Doctors</div><div class="value" id="doctors">3</div></div>
-    <div class="stat"><div class="label">Active Volunteers</div><div class="value" id="vols">2</div></div>
-  </div>
-</section>
-
 <!-- Mission Section -->
 <section id="mission">
   <div class="two-col">
     <div class="card-soft">
       <h2>Our Mission</h2>
-      <p>Aash's Trust Fund exists to help stray cats survive, heal, and live safely. Every donation and volunteer effort contributes to this cause. We focus on rescue, medical treatment, short-term shelter and adoption support.</p>
-      <h3>What we do</h3>
+      <p>At Aash's Trust Fund, we are dedicated to ensuring that stray cats survive, heal, and thrive in safe environments. Every donation and volunteer effort directly supports rescue, medical care, temporary shelter, and adoption services.</p>
+      <h3>What We Do</h3>
       <ul>
-        <li>Daily feeding and monitoring</li>
-        <li>Rescue and emergency medical care</li>
-        <li>Vaccination and TNR where possible</li>
-        <li>Temporary shelter and adoption assistance</li>
+        <li>Provide daily feeding and health monitoring</li>
+        <li>Conduct rescues and emergency medical treatments</li>
+        <li>Administer vaccinations and implement TNR programs when possible</li>
+        <li>Offer short-term shelter and adoption support</li>
       </ul>
     </div>
     <div class="card-soft">
-      <h2>How to Help</h2>
-      <p>Donate, volunteer, or share our mission. Small monthly contributions make a large impact when pooled together.</p>
+      <h2>How You Can Help</h2>
+      <p>Your support makes a real difference. You can help by donating, volunteering, or sharing our mission. Even small monthly contributions, when combined, create a significant impact for these cats.</p>
       <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
-        <a class="btn btn-primary" href="#donate">Donate</a>
-        <a class="btn btn-secondary" href="#volunteer">Become a Volunteer</a>
+        <a class="btn btn-primary" href="#donate">Donate Now</a>
+        <a class="btn btn-secondary" href="#volunteer">Join as Volunteer</a>
       </div>
     </div>
   </div>
 </section>
 
+
 <!-- Gallery Section -->
 <section id="gallery">
   <h2>Gallery</h2>
-  <p>Photos from rescues, recovery and happy adoptions. <!--Slides advance every 30 seconds.--></p>
+  <p>Photos from rescues, recovery and happy adoptions.</p>
+
   <div class="slider-wrap">
     <div class="slides" id="slides">
-      <!-- Easily add/remove images below -->
       <div class="slide"><img src="assets/images/cat1.jpg" alt="Rescued cat 1"></div>
       <div class="slide"><img src="assets/images/cat2.jpg" alt="Rescued cat 2"></div>
       <div class="slide"><img src="assets/images/cat3.jpg" alt="Rescued cat 3"></div>
@@ -95,37 +85,85 @@
     </div>
     <div class="slider-controls" id="dots"></div>
   </div>
+
+  <a href="assets/archive.html" class="archive-link">View Full Archive →</a>
 </section>
+
+<!-- Stats Section -->
+<section id="stats">
+  <div class="section-header">
+    <h2>Our Impact in Numbers</h2>
+    <p>Tracking our rescue efforts, care, and support — every number tells a story.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="label">Cats Rescued / Treated</div>
+      <div class="value" id="rescueCount">1</div>
+    </div>
+    <div class="stat">
+      <div class="label">Cats Currently in Care</div>
+      <div class="value" id="careCount">0</div>
+    </div>
+    <div class="stat">
+      <div class="label">Vaccines Administered</div>
+      <div class="value" id="vaccineCount">0</div>
+    </div>
+    <div class="stat">
+      <div class="label">Total Donations</div>
+      <div class="value" id="donationTotal">PKR 25,000</div>
+    </div>
+    <div class="stat">
+      <div class="label">Total Expenses</div>
+      <div class="value" id="expenseTotal">PKR 11,000</div>
+    </div>
+    <div class="stat">
+      <div class="label">Available Doctors</div>
+      <div class="value" id="doctors">3</div>
+    </div>
+    <div class="stat">
+      <div class="label">Active Volunteers</div>
+      <div class="value" id="vols">2</div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Donate Section -->
 <section id="donate">
-  <h2>Donate</h2>
-  <p>Bank transfer details below. <!-- Easypaisa and JazzCash placeholders can be added later. --></p>
+  <h2>Support Our Cause</h2>
+  <p>Your contribution helps us rescue, treat, and care for stray cats. Even a small donation goes a long way in saving lives. Reach out to us to contribute via WhatsApp or Email:</p>
   <div class="donate-grid">
     <div></div>
     <div class="bank">
+      <h3>Get in Touch to Donate</h3>
+      <!--<p>Email: <a href="mailto:donate@aashstraycats.org">donate@aashstraycats.org</a></p>-->
+  <div class="whatsapp-wrapper">
+  <a class="whatsapp-btn" href="https://wa.me/923330483192" target="_blank" rel="noopener noreferrer">
+    Contact us on WhatsApp
+  </a>
+</div>
+
+
+      <!-- Bank transfer details can be added here later
       <h3>Bank Transfer</h3>
       <p>Account Title: <strong>Your Name</strong></p>
       <p>Bank: <strong>Your Bank</strong></p>
       <p>Account #: <strong>000000000000</strong></p>
       <p>IBAN: <strong>PK00-XXXX-XXXX-XXXX</strong></p>
-
-      <!--
-      <h3>Easypaisa / JazzCash</h3>
-      <p>Easypaisa Number: <strong>03XXXXXXXXX</strong></p>
-      <p>JazzCash Number: <strong>03XXXXXXXXX</strong></p>
       -->
     </div>
     <div></div>
   </div>
 </section>
 
+
 <!-- Contact Section -->
 <section id="contact">
   <h2>Contact Us</h2>
   <div class="contact-row">
-    <a class="contact-btn contact-email" href="mailto: zulqarnaiop@yahoo.com">✉️ Email Us</a>
-    <a class="contact-btn contact-wa" href="https://wa.me/03330483192" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+    <a class="contact-btn contact-email" href="mailto:youremail@example.com">✉️ Email Us</a>
+    <a class="contact-btn contact-wa" href="https://wa.me/03000000000" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
   </div>
 
   <h3 id="volunteer">Volunteer Form</h3>
@@ -144,7 +182,7 @@
 <footer>
   <div class="footer-container">
     <span>© <span id="year"></span> ATF — Aash's Trust Fund</span>
-    <span>Founded by <a href="mailto:zulqarnainop@yahoo.com">Zu1qarnain</a></span>
+    <span>Founded by <a href="mailto:zulqarnain@example.com">Zu1qarnain</a></span>
   </div>
 </footer>
 
@@ -175,7 +213,7 @@
     const message = encodeURIComponent(
       `Hello, I want to volunteer:%0AName: ${form.name.value}%0AAge: ${form.age.value}%0ACity: ${form.city.value}%0APhone: ${form.phone.value}%0ASkills: ${form.skills.value}%0AAvailability: ${form.availability.value}`
     );
-    window.open(`https://wa.me/03330483192?text=${message}`, '_blank');
+    window.open(`https://wa.me/03000000000?text=${message}`, '_blank');
   });
 
   // Slider
@@ -210,4 +248,3 @@
 
 </body>
 </html>
-

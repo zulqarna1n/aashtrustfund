@@ -30,7 +30,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   const dotsWrap = document.getElementById('dots');
   const slideCount = slides.length;
   let currentIndex = 0;
-  const timeout = 30000; // 30s
+  const timeout = 5000; // 5s
 
   // Create dots
   for(let i=0; i<slideCount; i++){
