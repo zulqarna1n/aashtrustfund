@@ -73,6 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.classList.toggle('open'); // optional animation
   });
 });
+// Close hamburger menu when clicking outside
+document.addEventListener("click", (e) => {
+  const isClickInsideMenu = navMenu.contains(e.target) || hamburger.contains(e.target);
+  if (!isClickInsideMenu && navMenu.classList.contains("active")) {
+    navMenu.classList.remove("active");
+    hamburger.classList.remove("active");
+  }
+});
+
 
 // Back to Top button (appears after first viewport)
 (function(){

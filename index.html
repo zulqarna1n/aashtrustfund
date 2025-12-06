@@ -33,11 +33,11 @@
 
 <!-- Hero Section -->
 <section id="hero" class="hero">
-  <img src="assets/images/banner.jpg" alt="Hero Banner" class="hero-img">
+  <img src="assets/images/melina-kiefer-DJej5EknkW4-unsplash.jpg" alt="Hero Banner" class="hero-img">
   <div class="overlay"></div>
   <div class="hero-inner">
     <h1>Compassion. Rescue. Recovery.</h1>
-    <p>Saving stray cats through rescue, treatment and shelter — with transparency and care.</p>
+    <p>Saving stray animals through rescue, treatment and shelter — with transparency and care.</p>
     <div class="cta">
       <a class="btn btn-primary" href="#donate">Donate Now</a>
       <a class="btn btn-secondary" href="#volunteer">Volunteer</a>
@@ -74,59 +74,88 @@
 <!-- Gallery Section -->
 <section id="gallery">
   <h2>Gallery</h2>
-  <p>Photos from rescues, recovery and happy adoptions.</p>
+  <p>Photos from rescues, recovery, events, and happy adoptions.</p>
 
   <div class="slider-wrap">
     <div class="slides" id="slides">
-      <div class="slide"><img src="assets/images/cat1.jpg" alt="Rescued cat 1"></div>
-      <div class="slide"><img src="assets/images/cat2.jpg" alt="Rescued cat 2"></div>
-      <div class="slide"><img src="assets/images/cat3.jpg" alt="Rescued cat 3"></div>
-      <div class="slide"><img src="assets/images/cat4.jpg" alt="Rescued cat 4"></div>
+
+      <!-- Slide Card -->
+      <div class="slide">
+        <img src="assets/images/cat1.jpg" alt="Event 1">
+        <!-- Overlay for text -->
+        <div class="slide-overlay">
+          <p class="location">📍 University Road, Peshawar</p>
+          <p class="date">📅 12 Aug 2024 — 4:15 PM</p>
+          <p class="story">Community adoption drive with multiple rescued cats available for adoption.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="assets/images/cat2.jpg" alt="Event 2">
+        <div class="slide-overlay">
+          <p class="location">📍 Phase 6, Peshawar</p>
+          <p class="date">📅 18 Oct 2024 — 2:20 PM</p>
+          <p class="story">Vaccination and treatment camp for stray cats in the area.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="assets/images/cat3.jpg" alt="Event 3">
+        <div class="slide-overlay">
+          <p class="location">📍 University Road, Peshawar</p>
+          <p class="date">📅 05 Nov 2024 — 11:00 AM</p>
+          <p class="story">Fundraising and awareness event for cat rescues.</p>
+        </div>
+      </div>
+
     </div>
+
     <div class="slider-controls" id="dots"></div>
   </div>
 
-  <a href="assets/archive.html" class="archive-link">View Full Archive →</a>
+  <a href="archive.html" class="archive-link">View Full Archive →</a>
 </section>
 
 <!-- Stats Section -->
-<section id="stats">
+<div id="stats">
   <div class="section-header">
-    <h2>Our Impact in Numbers</h2>
-    <p>Tracking our rescue efforts, care, and support — every number tells a story.</p>
+    <h2>Our Impact</h2>
+    <p>Helping save and support stray animals every day</p>
   </div>
 
-  <div class="stats">
+  <div class="stats-grid">
     <div class="stat">
-      <div class="label">Cats Rescued / Treated</div>
-      <div class="value" id="rescueCount">1</div>
+      <div class="value">0</div>
+      <div class="label">Cats Rescued</div>
     </div>
+
     <div class="stat">
-      <div class="label">Cats Currently in Care</div>
-      <div class="value" id="careCount">0</div>
+      <div class="value">1</div>
+      <div class="label">Medical Cases</div>
     </div>
+
     <div class="stat">
-      <div class="label">Vaccines Administered</div>
-      <div class="value" id="vaccineCount">0</div>
+      <div class="value">0</div>
+      <div class="label">Adoptions</div>
     </div>
+
     <div class="stat">
-      <div class="label">Total Donations</div>
-      <div class="value" id="donationTotal">PKR 25,000</div>
+      <div class="value">2</div>
+      <div class="label">Vaccinations</div>
     </div>
+
     <div class="stat">
-      <div class="label">Total Expenses</div>
-      <div class="value" id="expenseTotal">PKR 11,000</div>
+      <div class="value">25000+</div>
+      <div class="label">Donations Received</div>
     </div>
+
     <div class="stat">
-      <div class="label">Available Doctors</div>
-      <div class="value" id="doctors">3</div>
-    </div>
-    <div class="stat">
+      <div class="value">2</div>
       <div class="label">Active Volunteers</div>
-      <div class="value" id="vols">2</div>
     </div>
   </div>
-</section>
+</div>
+
 
 
 <!-- Donate Section -->
@@ -245,6 +274,7 @@
   window.addEventListener('scroll', ()=> backToTop.style.display = window.scrollY > window.innerHeight ? 'block' : 'none');
   backToTop.addEventListener('click', e=> { e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
 </script>
+
 
 </body>
 </html>

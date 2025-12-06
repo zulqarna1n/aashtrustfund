@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATF — Rescue Archive</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ================= VARIABLES ================= */
+:root {
+  --siamese-brown: #5A4632;
+  --siamese-blue: #1CA3EC;
+  --muted: #eee;
+  --card-bg: #fff;
+  --tag-rescue: #e63946;
+  --tag-recovery: #ff9f1c;
+  --tag-adopted: #2a9d8f;
+  --tag-treated: #ffbe0b;
+  --tag-vaccinated: #2ec4b6;
+}
+
+/* ================= RESET ================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f5f5f5; color: #222; line-height: 1.5; }
+a { text-decoration: none; }
+
+/* ================= HEADER ================= */
+header {
+  background: var(--siamese-blue);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-radius: 0 0 10px 10px;
+}
+.logo { font-weight: 700; font-size: 1.3rem; color: #fff; }
+
+/* Navigation menu */
+nav { display: flex; gap: 15px; }
+nav a { font-weight: 600; color: #fff; transition: 0.25s; padding: 6px 10px; border-radius: 5px; }
+nav a.active, nav a:hover { background: #fff; color: var(--siamese-blue); }
+
+/* Hamburger menu (mobile) */
+.hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: #fff; border-radius: 2px; }
+
+/* ================= MAIN ================= */
+main { padding: 40px 20px; max-width: 1200px; margin: auto; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 8px; color: #222; text-align: center; }
+.section-sub { text-align: center; color: #555; margin-bottom: 40px; }
+
+/* ================= FILTER BUTTONS ================= */
+.filter-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.filter-btn { padding: 10px 22px; border: 1px solid #222; border-radius: 6px; background: transparent; color: #222; cursor: pointer; font-weight: 600; transition: 0.25s; }
+.filter-btn.active, .filter-btn:hover { background: #222; color: #fff; }
+
+/* ================= ARCHIVE GRID ================= */
+.archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+
+/* ================= CARD STYLING ================= */
+.archive-card {
+  background: var(--card-bg);
+  color: #222;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: 0.4s;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Hide filtered cards */
+.archive-card.hide { opacity: 0; transform: translateY(20px); pointer-events: none; }
+
+/* Hover effect */
+.archive-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+/* ================= IMAGE ================= */
+.archive-card img {
+  width: 100%;          /* full width of card */
+  height: 200px;        /* fixed height for all cards */
+  object-fit: cover;    /* cover the area without stretching */
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+/* ================= TAGS ================= */
+.archive-card .tags { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 16px; }
+.tag { padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 0.7rem; color: #fff; text-transform: uppercase; }
+.tag.rescue { background: var(--tag-rescue); }
+.tag.recovery { background: var(--tag-recovery); }
+.tag.adopted { background: var(--tag-adopted); }
+.tag.treated { background: var(--tag-treated); }
+.tag.vaccinated { background: var(--tag-vaccinated); }
+
+/* ================= DETAILS (hidden until expanded) ================= */
+.archive-card .details {
+  padding: 0 16px 16px 16px;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+}
+
+/* Show details when expanded */
+.archive-card.expanded .details { max-height: 1000px; opacity: 1; }
+
+.archive-card .location, .archive-card .date { color: #666; font-size: 0.9rem; margin-bottom: 4px; }
+.archive-card .story { font-size: 0.95rem; line-height: 1.5; margin-top: 8px; color: #333; }
+
+/* ================= NO RESULTS MESSAGE ================= */
+.no-results { text-align: center; color: #e63946; font-weight: 600; font-size: 1.1rem; margin-top: 20px; display: none; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  nav { display: none; flex-direction: column; background: var(--siamese-blue); position: absolute; top: 60px; right: 20px; width: 180px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; z-index:200; }
+  nav a { color: #fff; }
+  nav a.active, nav a:hover { background: #fff; color: var(--siamese-blue); }
+  nav.active { display: flex; }
+}
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="logo">ATF — Aash's Trust Fund</div>
+
+  <!-- Navigation Menu -->
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="index.html#donate">Donations</a>
+    <a href="archive.html" class="active">Archive</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <!-- Hamburger Menu (mobile) -->
+  <div id="hamburger" class="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ================= MAIN ================= -->
+<main>
+  <section id="archive" class="section">
+
+    <!-- Section Title -->
+    <h2 class="section-title">Rescue Archive</h2>
+    <p class="section-sub">Browse past rescues with complete details.</p>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="rescue">Rescued</button>
+      <button class="filter-btn" data-filter="recovery">Recovery</button>
+      <button class="filter-btn" data-filter="treated">Treated</button>
+      <button class="filter-btn" data-filter="vaccinated">Vaccinated</button>
+      <button class="filter-btn" data-filter="adopted">Adopted</button>
+    </div>
+
+    <!-- Archive Grid -->
+    <div class="archive-grid">
+
+      <!-- ================= TEMPLATE CARD ================= -->
+      <!-- Copy this block to add a new card -->
+      <div class="archive-card rescue treated vaccinated">
+        <!-- Image -->
+        <img src="assets/images/archive/banner.jpg" alt="Cat A" loading="lazy">
+
+        <!-- Tags -->
+        <div class="tags">
+          <span class="tag rescue">Rescued</span>
+          <span class="tag treated">Treated</span>
+          <span class="tag vaccinated">Vaccinated</span>
+        </div>
+
+        <!-- Hidden Details (show on expand) -->
+        <div class="details">
+          <p class="location">📍 University Road, Peshawar</p>
+          <p class="date">📅 12 Aug 2024 — 4:15 PM</p>
+          <p class="story">Found near University Road with leg wounds. Treated, vaccinated. Healthy and active.</p>
+        </div>
+      </div>
+      <!-- END TEMPLATE CARD -->
+
+      <!-- ================= EXAMPLE CARD ================= -->
+      <div class="archive-card recovery adopted">
+        <img src="assets/images/archive/catC.jpg" alt="Cat C" loading="lazy">
+        <div class="tags">
+          <span class="tag recovery">Recovery</span>
+          <span class="tag adopted">Adopted</span>
+        </div>
+        <div class="details">
+          <p class="location">📍 Phase 6, Peshawar</p>
+          <p class="date">📅 18 Oct 2024 — 2:20 PM</p>
+          <p class="story">Fully healed and adopted by a loving family. Now living a safe, happy life.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results">No matching records found.</div>
+  </section>
+</main>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+// ---------------- HAMBURGER MENU ----------------
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+// Toggle hamburger menu on click
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+});
+
+// Close menu when clicking outside
+document.addEventListener("click", (e) => {
+  if(!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+    navMenu.classList.remove("active");
+    hamburger.classList.remove("active");
+  }
+});
+
+// Close menu on link click
+navMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+    hamburger.classList.remove("active");
+  });
+});
+
+// ---------------- ARCHIVE FILTERING ----------------
+const filterBtns = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".archive-card");
+const noResults = document.querySelector(".no-results");
+
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    // Toggle active button
+    filterBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const filter = btn.dataset.filter;
+    let visibleCount = 0;
+
+    // Show/hide cards based on filter
+    cards.forEach(card => {
+      if(filter === "all" || card.classList.contains(filter)){
+        card.classList.remove("hide");
+        visibleCount++;
+      } else {
+        card.classList.add("hide");
+        card.classList.remove("expanded"); // close details if hidden
+      }
+    });
+
+    // Show no results message if needed
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
+  });
+});
+
+// ---------------- CARD EXPAND/CONTRACT ----------------
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    // Collapse all other cards
+    cards.forEach(c => { if(c !== card) c.classList.remove("expanded"); });
+    // Toggle clicked card
+    card.classList.toggle("expanded");
+  });
+});
+
+// Select all anchor links starting with #
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) {
+      // Scroll to the element minus header height
+      const headerOffset = document.querySelector('header').offsetHeight;
+      const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
